@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 23:39:05 by rafael            #+#    #+#             */
-/*   Updated: 2025/08/14 14:21:11 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/15 19:43:07 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 int	main(int argn, char **arg)
 {
 	size_t	input_size;
-	char	input_buffer[256];
 	int		i;
+	char	input_buffer[256];
+	char	unitys[2][3];
 	
 	ft_prichar("Unidad actual, Unidad Deseada y el entero a convertir", 0);
 	ft_prichar(" Ejemplo: mg g 45", 1);
-	//Se le pregunta al usuario las unidades a convertir y la cantidad
 	input_size = read(0, input_buffer, (sizeof(input_buffer) -1));
 	//Caso tal de que no haya escrito nada, se manda un mensaje de error
 	if((input_size) <= 1)
@@ -37,13 +37,17 @@ int	main(int argn, char **arg)
 		write(2, "Error de lectura, pruebe ingresando un correct input\n", 53);
 		return	(1);
 	}
-/* 	 printf("el input tiene un tamaño de : %ld", input_size); */
 	i = 0;
-	//Se desinga NULL en el ultimo espacio en memoria del buffer(por eso el menos 1)
 	input_buffer[input_size] = '\0';
-
-	//Se lee y muestra uno por uno los caracteres del User's Input
-	ft_prichar(input_buffer, 0);
+	if(ft_correct_unity(input_buffer, unitys))
+	{
+		ft_prichar(unitys[0], 1);
+		ft_prichar(unitys[1], 1);
+		/* write(1, &unitys[0][1],1);
+		write(1, &unitys[0][2],1); */
+	}
+	else
+		write(2, "Error en las unidades",21);
 	return (0);
 }
 /*
