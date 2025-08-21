@@ -6,7 +6,7 @@
 /*   By: rafael <rafael@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:47:04 by rafael            #+#    #+#             */
-/*   Updated: 2025/08/15 22:55:25 by rafael           ###   ########.fr       */
+/*   Updated: 2025/08/22 00:07:20 by rafael           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@
 */
 void	ft_prichar(char	*str, int	new_line, int init)
 {
-	if (init == 0)
-		init = -1;
-	
+	init--;	
 	while (str[++init])
 		write(1, &str[init], 1);
 	if (new_line)
